@@ -1,27 +1,21 @@
-from explicit_wait import MyWaits
+from selenium.webdriver.common.by import By
 
 
-url = "http://localhost/index.php?route=account/login"
+# url = "http://localhost/index.php?route=account/login"
 
 
-def test_element_by_id(browser):
-    my_waits = MyWaits(browser)
-    browser.get(url)
-    my_waits.element("#content")
+def test_element_by_id(login_page):
+    login_page.element(locator=(By.CSS_SELECTOR, "#content"))
     # browser.find_element(By.ID, "content")
-    my_waits.element("#column-right")
+    login_page.element(locator=(By.CSS_SELECTOR, "#column-right"))
     # browser.find_element_by_id("column-right")
 
 
-def test_elements_by_css_selector(browser):
-    my_waits = MyWaits(browser)
-    browser.get(url)
-    my_waits.elements(".form-control")
+def test_elements_by_css_selector(login_page):
+    login_page.elements(locator=(By.CSS_SELECTOR, ".form-control"))
     # browser.find_elements(By.CSS_SELECTOR, ".form-control")
 
 
-def test_element_by_class_name_selector(browser):
-    my_waits = MyWaits(browser)
-    browser.get(url)
-    my_waits.elements(".control-label")
+def test_element_by_class_name_selector(login_page):
+    login_page.elements(locator=(By.CSS_SELECTOR, ".control-label"))
     # browser.find_elements_by_class_name("control-label")
